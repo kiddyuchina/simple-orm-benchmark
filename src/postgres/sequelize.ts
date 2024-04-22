@@ -54,15 +54,26 @@ User.init(
       type: DataTypes.DATE,
       allowNull: true,
     },
+    fullName: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return `${this.username} ${this.name}`;
+      },
+    },
   },
   { sequelize, underscored: true, tableName: 'users' }
 );
 
-export const sequelizePostgresGetUser = (id: number) =>
-  User.findOne({
+export const sequelizePostgresGetUser = async (id: number) => {
+  const user = await User.findOne({
     where: {
       id,
     },
   });
+
+  const fullName = user.fullName;
+  JSON.stringify(user);
+  return user;
+}
 
 export const sequelizeClose = () => sequelize.close();

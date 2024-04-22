@@ -57,7 +57,11 @@ if (!postgresConfig.max) {
 
 const orm = await MikroORM.init<PostgreSqlDriver>(options);
 
-export const mikroPostgresGetUser = async (id: number) =>
-  await orm.em.findOne(User, { id });
+export const mikroPostgresGetUser = async (id: number) => {
+  const user = await orm.em.findOne(User, { id });
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const mikroClose = () => orm.close();

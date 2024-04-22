@@ -9,8 +9,8 @@ if (connectionLimit) {
 
 const pool = createPool(config);
 
-export const mySqlGetUser = async (id: number) =>
-  new Promise((resolve, reject) => {
+export const mySqlGetUser = async (id: number) => {
+  const user = await new Promise((resolve, reject) => {
     pool.query(
       {
         sql: 'SELECT * FROM `users` WHERE id = ?',
@@ -25,5 +25,10 @@ export const mySqlGetUser = async (id: number) =>
       }
     );
   });
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const mySqlClose = () => pool.end();

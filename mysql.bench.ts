@@ -11,6 +11,7 @@ import {
   prismaMySqlGetUser,
   sequelizeMySqlGetUser,
   typeormMySqlGetUser,
+  sutandoMySqlGetUser,
 } from './src/mysql';
 
 group('MySQL', async () => {
@@ -23,6 +24,7 @@ group('MySQL', async () => {
   bench('MySQL2', async () => await getUser(mySql2GetUser));
   bench('Prisma', async () => await getUser(prismaMySqlGetUser));
   bench('Sequelize', async () => await getUser(sequelizeMySqlGetUser));
+  bench('Sutando', async () => await getUser(sutandoMySqlGetUser));
   bench('TypeORM', async () => await getUser(typeormMySqlGetUser));
 });
 

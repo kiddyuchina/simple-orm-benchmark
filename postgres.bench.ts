@@ -11,6 +11,7 @@ import {
   sequelizePostgresGetUser,
   typeormPostgresGetUser,
   pgTypedGetUser,
+  sutandoPostgresGetUser,
 } from './src/postgres';
 
 group('PostgreSQL', () => {
@@ -24,6 +25,7 @@ group('PostgreSQL', () => {
   bench('Prisma', async () => await getUser(prismaPostgresGetUser));
   bench('Sequelize', async () => await getUser(sequelizePostgresGetUser));
   bench('TypeORM', async () => await getUser(typeormPostgresGetUser));
+  bench('Sutando', async () => await getUser(sutandoPostgresGetUser));
 });
 
 await run({

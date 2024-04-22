@@ -15,7 +15,11 @@ if (!connectionLimit) {
 
 const db = knex(knexConfig);
 
-export const knexMySqlGetUser = async (id: number) =>
-  await db.select().from('users').where('id', id).first();
+export const knexMySqlGetUser = async (id: number) => {
+  const user = await db.select().from('users').where('id', id).first();
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const knexClose = async () => await db.destroy();

@@ -9,9 +9,14 @@ if (connectionLimit) {
 
 const pool = createPool(config);
 
-export const mySql2GetUser = async (id: number) =>
-  await pool
+export const mySql2GetUser = async (id: number) => {
+  const user = await pool
     .execute('SELECT * FROM `users` WHERE id = ?', [id])
     .then(([rows]) => (rows as unknown[])[0]);
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const mySql2Close = () => pool.end();

@@ -25,11 +25,16 @@ const pool = new pg.Pool(config);
 
 const db = drizzle(pool);
 
-export const drizzlePostgreGetUser = async (id: number) =>
-  await db
+export const drizzlePostgreGetUser = async (id: number) => {
+  const user = await db
     .select()
     .from(users)
     .where(eq(users.id, id))
     .then((arr) => arr[0]);
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const drizzleClose = () => pool.end();

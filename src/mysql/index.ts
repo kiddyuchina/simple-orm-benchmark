@@ -8,3 +8,4 @@ export * from './prisma';
 export * from './sequelize';
 export * from './mikro';
 export * from './typeorm';
+export * from './sutando';

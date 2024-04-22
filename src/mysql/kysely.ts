@@ -34,11 +34,16 @@ const db = new Kysely<Database>({
   dialect,
 });
 
-export const kyselyMySqlGetUser = async (id: number) =>
-  await db
+export const kyselyMySqlGetUser = async (id: number) => {
+  const user = await db
     .selectFrom('users')
     .selectAll()
     .where('id', '=', id)
     .executeTakeFirst();
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const kyselyClose = () => db.destroy();

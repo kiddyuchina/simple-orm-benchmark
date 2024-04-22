@@ -57,7 +57,12 @@ if (!mySqlConfig.connectionLimit) {
 
 const orm = await MikroORM.init<MySqlDriver>(options);
 
-export const mikroMySqlGetUser = async (id: number) =>
-  await orm.em.findOne(User, { id });
+export const mikroMySqlGetUser = async (id: number) => {
+  const user = await orm.em.findOne(User, { id });
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const mikroClose = () => orm.close();

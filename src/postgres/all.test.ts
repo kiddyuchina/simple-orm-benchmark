@@ -9,6 +9,7 @@ import { pgClose, pgGetUser } from './pg';
 import { postgresClose, postgresGetUser } from './postgres';
 import { typeormClose, typeormPostgresGetUser } from './typeorm';
 import { pgTypedClose, pgTypedGetUser } from './pg-typed';
+import { sutandoClose, sutandoPostgresGetUser } from './sutando';
 
 describe('[PostgreSQL] unit tests', () => {
   const checkUnit = async (fun: (id: number) => Promise<any>) => {
@@ -59,6 +60,11 @@ describe('[PostgreSQL] unit tests', () => {
   it('Sequelize', async () => {
     await checkUnit(sequelizePostgresGetUser);
     await sequelizeClose();
+  });
+
+  it('Sutando', async () => {
+    await checkUnit(sutandoPostgresGetUser);
+    await sutandoClose();
   });
 
   it('TypeORM', async () => {

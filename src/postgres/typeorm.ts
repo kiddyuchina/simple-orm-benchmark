@@ -59,11 +59,16 @@ const dataSource = new DataSource(options);
 
 await dataSource.initialize();
 
-export const typeormPostgresGetUser = (id: number) =>
-  dataSource.getRepository(User).findOne({
+export const typeormPostgresGetUser = async (id: number) => {
+  const user = await dataSource.getRepository(User).findOne({
     where: {
       id,
     },
   });
+  
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const typeormClose = () => dataSource.destroy();

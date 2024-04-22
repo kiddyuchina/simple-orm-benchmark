@@ -8,3 +8,4 @@ export * from './postgres';
 export * from './prisma';
 export * from './sequelize';
 export * from './typeorm';
+export * from './sutando';

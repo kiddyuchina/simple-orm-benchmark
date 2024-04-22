@@ -9,11 +9,16 @@ const prismaClientOptions = {
 
 const prisma = new PrismaClient(prismaClientOptions);
 
-export const prismaMySqlGetUser = async (id: number) =>
-  await prisma.users.findFirst({
+export const prismaMySqlGetUser = async (id: number) => {
+  const user = await prisma.users.findFirst({
     where: {
       id,
     },
   });
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const prismaClose = () => prisma.$disconnect();

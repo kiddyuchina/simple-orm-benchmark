@@ -25,9 +25,14 @@ const poolConnection = createPool(config);
 
 const db = drizzle(poolConnection, { schema: { users }, mode: 'default' });
 
-export const drizzleMySqlGetUser = async (id: number) =>
-  await db.query.users.findFirst({
+export const drizzleMySqlGetUser = async (id: number) => {
+  const user = await db.query.users.findFirst({
     where: eq(users.id, id),
   });
+
+  user.full_name = user.username + ' ' + user.name;
+  JSON.stringify(user);
+  return user;
+}
 
 export const drizzleClose = () => poolConnection.end();

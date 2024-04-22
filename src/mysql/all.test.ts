@@ -9,6 +9,7 @@ import { sequelizeClose, sequelizeMySqlGetUser } from './sequelize';
 import { mikroClose, mikroMySqlGetUser } from './mikro';
 import { typeormClose, typeormMySqlGetUser } from './typeorm';
 import { mySqlClose, mySqlGetUser } from './mysql';
+import { sutandoClose, sutandoMySqlGetUser } from './sutando';
 
 describe('[MySQL] unit tests', () => {
   const checkUnit = async (fun: (id: number) => Promise<any>) => {
@@ -64,5 +65,10 @@ describe('[MySQL] unit tests', () => {
   it('TypeORM', async () => {
     await checkUnit(typeormMySqlGetUser);
     await typeormClose();
+  });
+
+  it('Sutando', async () => {
+    await checkUnit(sutandoMySqlGetUser);
+    await sutandoClose();
   });
 });
