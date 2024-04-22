@@ -5,25 +5,27 @@ benchmark       time (avg)             (min … max)       p75       p99      p9
 -------------------------------------------------- -----------------------------
 • MySQL
 -------------------------------------------------- -----------------------------
-DrizzleORM     490 µs/iter     (337 µs … 2'560 µs)    487 µs  2'181 µs  2'554 µs
-KnexJS         355 µs/iter     (270 µs … 1'870 µs)    338 µs  1'693 µs  1'855 µs
-Kysely         317 µs/iter     (242 µs … 1'876 µs)    305 µs  1'638 µs  1'873 µs
-Mariadb        284 µs/iter     (206 µs … 2'315 µs)    273 µs  1'689 µs  1'923 µs
-MikroORM       422 µs/iter  (18'484 ns … 2'915 µs)    546 µs  2'282 µs  2'844 µs
-MySQL          455 µs/iter     (354 µs … 2'199 µs)    437 µs  1'910 µs  2'138 µs
-MySQL2         263 µs/iter     (202 µs … 1'813 µs)    255 µs  1'504 µs  1'729 µs
-Prisma         514 µs/iter     (418 µs … 2'117 µs)    490 µs  1'803 µs  2'023 µs
-Sequelize      477 µs/iter     (359 µs … 3'077 µs)    454 µs  2'042 µs  2'437 µs
-TypeORM        612 µs/iter     (463 µs … 2'856 µs)    578 µs  2'338 µs  2'856 µs
+DrizzleORM     557 µs/iter     (362 µs … 3'782 µs)    520 µs  3'127 µs  3'571 µs
+KnexJS         409 µs/iter     (287 µs … 3'653 µs)    378 µs  2'570 µs  3'597 µs
+Kysely         366 µs/iter     (262 µs … 2'864 µs)    329 µs  2'659 µs  2'848 µs
+Mariadb        366 µs/iter     (218 µs … 3'397 µs)    326 µs  2'895 µs  3'316 µs
+MikroORM       605 µs/iter  (50'935 ns … 4'174 µs)    658 µs  3'548 µs  4'174 µs
+MySQL          512 µs/iter     (375 µs … 2'976 µs)    469 µs  2'684 µs  2'896 µs
+MySQL2         307 µs/iter     (216 µs … 3'842 µs)    286 µs  2'051 µs  3'448 µs
+Prisma         623 µs/iter     (442 µs … 5'061 µs)    531 µs  3'575 µs  5'061 µs
+Sequelize      522 µs/iter     (385 µs … 2'790 µs)    488 µs  2'297 µs  2'606 µs
+Sutando        758 µs/iter     (532 µs … 3'585 µs)    679 µs  3'333 µs  3'585 µs
+TypeORM        706 µs/iter     (479 µs … 4'108 µs)    631 µs  3'273 µs  4'108 µs
 
 summary for MySQL
   MySQL2
-   1.08x faster than Mariadb
-   1.21x faster than Kysely
-   1.35x faster than KnexJS
-   1.6x faster than MikroORM
-   1.73x faster than MySQL
-   1.81x faster than Sequelize
-   1.87x faster than DrizzleORM
-   1.95x faster than Prisma
-   2.33x faster than TypeORM
+   1.19x faster than Mariadb
+   1.19x faster than Kysely
+   1.33x faster than KnexJS
+   1.67x faster than MySQL
+   1.7x faster than Sequelize
+   1.81x faster than DrizzleORM
+   1.97x faster than MikroORM
+   2.03x faster than Prisma
+   2.3x faster than TypeORM
+   2.47x faster than Sutando
