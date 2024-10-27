@@ -32,7 +32,7 @@
     "prisma": "latest",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.3",
-    "sutando": "^1.5.1",
+    "sutando": "^1.6.5",
     "ts-node": "^10.9.2",
     "typeorm": "^0.3.20"
   }
